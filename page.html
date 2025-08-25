@@ -1,1 +1,184 @@
-lol
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tietoturvaraportti</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        .section {
+            margin-bottom: 25px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+        .vastaamo-section {
+            background-color: #fff5f5;
+            border-left-color: #e74c3c;
+        }
+        .technical-details {
+            background-color: #f0f8ff;
+            font-family: 'Courier New', monospace;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        .command {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 10px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            margin: 10px 0;
+        }
+        .result-box {
+            background-color: #e8f5e8;
+            border: 1px solid #27ae60;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        .version-info {
+            background-color: #fff3cd;
+            border: 1px solid #ffc107;
+            padding: 10px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .warning {
+            background-color: #f8d7da;
+            border: 1px solid #dc3545;
+            padding: 10px;
+            border-radius: 4px;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Tietoturvaraportti</h1>
+        
+        <div class="section vastaamo-section">
+            <h2>x) Vastaamon Tietomurto - Darknet Diaries Episode 159</h2>
+            <p><strong>Keskustelu:</strong> Vastaamon tietomurrosta keskusteltiin Darknet Diaries -podcastin jaksossa 159. Jaksossa käsiteltiin Aleksanteri Kivimäen varhaisia vuosia ja miten hän päätyi hakkeroinnin pariin.</p>
+            
+            <p><strong>Kivimäen toiminta:</strong> Aleksanteri Kivimäen Vastaamo-tietomurtoa kuvaillaan todella likaiseksi, sillä hän julkaisi ihmisten terapiakäyntejä julkisuuteen. Hän yritti kiristää Vastaamoa, mutta kun Vastaamo ei taipunut kiristyksiin, Kivimäki yritti kiristää yksittäisiltä ihmisiltä rahaa.</p>
+            
+            <p><strong>Eettinen näkökulma:</strong> Tämä tapa kiristää on jopa hakkeriyhteisössä eettisten tapojen vastaista.</p>
+            
+            <p><strong>Kiinnijääminen:</strong> Kivimäki jäi lopulta kiinni tavalla, mikä oli erittäin tyhmää:</p>
+            <ul>
+                <li>Poliisi oli lähettänyt hänelle 300 euron edestä kryptovaluuttaa</li>
+                <li>Raha meni suoraan kryptolompakkoon, joka oli linkitetty hänen oikeaan identiteettiinsä</li>
+                <li>IP-osoitelokitietoja hän jätti myös, mikä vahvisti hänen syyllisyyttään</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>a) Kali Linux Asennus</h2>
+            <p>Asensin Kali Linux -virtuaalikäyttöjärjestelmän Oracle VM -hostiin. Kali Linux -distron sain suoraan heidän omilta sivuiltaan, heillä on aika näppärä asennus, missä pystyin suoraan importtaamaan Kali Linuxin Oracle VirtualBoxiin. Oli melkein plug and play.</p>
+            
+            <div class="version-info">
+                <strong>Kali versio:</strong> Kali 2025.2
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>c) Nmap-skannauksen Tulokset</h2>
+            
+            <h3>Komento ja Selitykset:</h3>
+            <div class="command">
+                nmap -T4 -A localhost
+            </div>
+            
+            <div class="technical-details">
+                <strong>Komennon osat:</strong><br>
+                • <strong>nmap</strong> = kyseistä moduulia mikä kutsutaan komentorivillä<br>
+                • <strong>-T4</strong> = tarkoittaa nopeutta, kuinka nopeasti nmap skannaa portit<br>
+                • <strong>-A</strong> = rajoittaa mitä haetaan, tässä tapauksessa halutaan tietää:
+                <ul>
+                    <li>Mitä käyttöjärjestelmää</li>
+                    <li>Käyttöjärjestelmän versiota</li>
+                    <li>Millaisen skriptin valitsee skannausta varten</li>
+                    <li>Traceroute (en ymmärrä mitä tarkoittaa traceroute)</li>
+                </ul>
+            </div>
+
+            <div class="warning">
+                <strong>Ensimmäinen tulos:</strong> Nmap-skannaus ei löytänyt tuloksia koska uusi Kali Linux sulkee porttinsa oletuksena.
+            </div>
+
+            <h3>Whonix-demon Asennus:</h3>
+            <p>Asensin Whonix-demonin ja tein saman portiskannauksen.</p>
+            
+            <div class="result-box">
+                <strong>Whonix-tulos:</strong><br>
+                Koska Whonix pyörii Torin kautta, niin se löysi <strong>9050 portin</strong> mikä on auki. Ero johtuu siitä, että portin täytyy olla auki jotta Tor-verkko toimisi. Kalissa portit ovat oletuksena kaikki suljettuna.
+            </div>
+
+            <h3>Debian Asennus:</h3>
+            <div class="result-box">
+                <strong>Debian-tulos:</strong><br>
+                Seuraavaksi asensin Debianin, ja huomasin että skannauksen outputti oli <strong>631 portti</strong> mikä on auki. Debian CUPS 2.4 mikä käyttää porttia 631 että saisi nettiyhteyden.
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>f) Virtuaaliverkon Ongelmat</h2>
+            <div class="warning">
+                <strong>Ongelma:</strong> En osannut tehdä virtuaaliverkkoa Kalin ja Metasploitablen välille. En ole varma pitääkö se olla host-only vai NAT-muotoinen verkko.
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Yhteenveto Porttiskannauksista</h2>
+            <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+                <tr style="background-color: #3498db; color: white;">
+                    <th style="border: 1px solid #ddd; padding: 12px;">Käyttöjärjestelmä</th>
+                    <th style="border: 1px solid #ddd; padding: 12px;">Avoimet Portit</th>
+                    <th style="border: 1px solid #ddd; padding: 12px;">Syy</th>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid #ddd; padding: 12px;">Kali Linux</td>
+                    <td style="border: 1px solid #ddd; padding: 12px;">Ei avoimia portteja</td>
+                    <td style="border: 1px solid #ddd; padding: 12px;">Oletuksena kaikki portit suljettu</td>
+                </tr>
+                <tr style="background-color: #f2f2f2;">
+                    <td style="border: 1px solid #ddd; padding: 12px;">Whonix</td>
+                    <td style="border: 1px solid #ddd; padding: 12px;">9050</td>
+                    <td style="border: 1px solid #ddd; padding: 12px;">Tor-verkko tarvitsee avoimen portin</td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid #ddd; padding: 12px;">Debian</td>
+                    <td style="border: 1px solid #ddd; padding: 12px;">631</td>
+                    <td style="border: 1px solid #ddd; padding: 12px;">CUPS 2.4 nettiyhteys</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
