@@ -1,17 +1,13 @@
-x) 1. Vastaamon tietomurrosta keskusteltiin darknet diarissa, ep 159. Jaksossa käsiteltiin Aleksanteri kivimäen varhaisia vuosia ja miten hän päätyi hakkeroinnin pariin.  Aleksanteri kiviäen Vastaamo tietomurtoa kuvaillaan todella likaiseksi, sillä hän julkaisi ihmisten terapiakäyntejä julkisuuteen. Hän yritti kiristää Vastaamoa, mutta kun Vastaamo ei taipunut kiristyksiin, Kivimäki yritti kiristää yksittäisilt ihmisiltä rahaa. Tämä tapa kiristää on jopa hakkerikommuunissa eettisten tapojen vastaista. Kivimäki jäi lopulta kiinni tavalla, mikä oli tosi tyhmää. Poliisi oli lähettänyt hänelle 300 euron edestä kryptovaluuttaa, mikä meni suoraan kryptolompakkoon mikä oli linkitetty häneen oikeaan identiteettiin. Ip-osite lokitetoja hän jätti myös mikä vahvisti hänen syyllisyyttään. 
+Lokaatio: Kotona, Tietokone: Lenovo Thinkpad, mihin on kytketty thinkpad dockkeri. 26.08.2025 16:59 – 17:32, 27.08.2025 08:30-20:30
+X) Lue/katso/kuuntele ja tiivistä. (Tässä x-alakohdassa ei tarvitse tehdä testejä tietokoneella, vain lukeminen tai kuunteleminen ja tiivistelmä riittää. Tiivistämiseen riittää muutama ranskalainen viiva.)
+1.  16:59 26.08.2025
+Vastaamon tietomurrosta keskusteltiin darknet diarissa, ep 159. Jaksossa käsiteltiin Aleksanteri kivimäen varhaisia vuosia ja miten hän päätyi hakkeroinnin pariin.  Aleksanteri kiviäen Vastaamo tietomurtoa kuvaillaan todella likaiseksi, sillä hän julkaisi ihmisten terapiakäyntejä julkisuuteen. Hän yritti kiristää Vastaamoa, mutta kun Vastaamo ei taipunut kiristyksiin, Kivimäki yritti kiristää yksittäisilt ihmisiltä rahaa. Tämä tapa kiristää on jopa hakkerikommuunissa eettisten tapojen vastaista. Kivimäki jäi lopulta kiinni tavalla, mikä oli tosi tyhmää. Poliisi oli lähettänyt hänelle 300 euron edestä kryptovaluuttaa, mikä meni suoraan kryptolompakkoon mikä oli linkitetty häneen oikeaan identiteettiin. Ip-osite lokitetoja hän jätti myös mikä vahvisti hänen syyllisyyttään. 
+2.  17:32 26.08.2025 (Viittaus nr1)
+Tässä raportissa/white paperissa, kappaleessa 3.2 käydään läpi sitä, mitä Intrusion Kill Chain on perinteisesti tarkoittanut ja miten sen voisi määritellä uudelleen. Lyhyesti Kill Chain tarkoittaa ketjussa olevia tapahtumia, yhden tapahtuman väliin jättämisestä seuraisi koko ketjun romahdus. White paper käsittelee kaikki kill chain vaiheet, tiedustelusta, haittaohjelmien valmistelu ja levitys, haittaohjelman hyödyntäminen yhteyden saamiseen ja lopulta yhdistäminen kohteeseen minne haittaohjelma on asennettu.   
+3.  09:00 27.08.2025 
+Videossa kerrottiin nmapista ja massscanista, niitten erovaisuuksista ja mihin tarkoituksiin niitä käytetään. Videossa käytettiin nmappia, siinä näytetään mitä tapahtuu kun skannaa ja mitä komentoja kannattaa käyttää. Videolla näytettiin myös masscanin eri toimintoja ja udp scannerin toiminnallisuutta ja sen outputtia. EyeWitness
+
 
 a)	Asensin kali linux virutaalikäyttöjärjestelmän Oracle VM hostiin. Kali linux distron sain suoraan heidän omilta sivuiltaan, heillä on aika näppärä asennus, missä pystyin suoraan importtaamaan kali linuxin oracle virtualboxiin. Oli melkein plug and play.
 Kali version: Kali 2025.2
-b)	
-c)	Tulokset: 
-nmap -T4 -A localhost, nmap tarkoittaa kyseistä moduulia mikä kutsutaan komentorivillä tässä tapauksessa nmap, -T4 tarkoittaa nopeutta, Kuinka nopeasti nmap skannaa portit, -A rajoittaa mitä haetaan, tässä tpaauksessa halutaan tietää mitä Käyttöjärjestelmää, käyttöjärjestelmän versiota, millaisen skriptin valitsee skannausta varten ja traceroute (en ymmärrä mitä tarkoittaa traceroute).
 
-Nmap skannaus ei löytänyt tuloksia koska uusi kali linux sulkee porttinsa defaulttina. 
-
-Asensin whonix demonin, tein saman porttiskannauksen. 
-
-Koska whonix pyörii torin kautta, niin se löysi 9050 portin mikä on auki. Ero johtuu siitä, että portin täytyy olla auki jotta tor verkko toimisi. Kalissa portit ovat defaulttina kaikki suljettuna. 
-
-Seuraavaksi asensin debianin, ja huomasin että skannauksen outputti oli 631 portti mikä on auki. Debian CUPS 2.4 mikä käyttää porttia 631 että saisi nettiyhteyden.
-
-f) en osannut tehdä virtuaaliverkkoa kalin ja metasploitabelin välille. En ole varma pitääkö se olla host only vai NAT muotoinen verkko 
