@@ -10,4 +10,72 @@ Videossa kerrottiin nmapista ja massscanista, niitten erovaisuuksista ja mihin t
 
 a)	Asensin kali linux virutaalikäyttöjärjestelmän Oracle VM hostiin. Kali linux distron sain suoraan heidän omilta sivuiltaan, heillä on aika näppärä asennus, missä pystyin suoraan importtaamaan kali linuxin oracle virtualboxiin. Oli melkein plug and play.
 Kali version: Kali 2025.2
+b)	 
+Avasin terminalin ja pingasin 8.8.8.8 osoitetta eikä saanut vastakaikua. Outputtiin tuli tuloste mikä ilmoitti netowork is unreachable. 
+c)	 
+Seuraavaksi kirjoitin terminaaliin sudo nmap -T4 -A localhost, sudo komentorivillä tarkoittaa sitä että komento suoritetaan ylimmillä ”admin” oikeuksilla. Nmap tarkoittaa kyseistä moduulia/työkalua mikä kutsutaan komentorivillä, -T4 tarkoittaa nopeutta, kuinka nopeasti nmap lähettää paketteja portteihin, -A rajoittaa mitä haetaan, komento hakee mitä Käyttöjärjestelmää, käyttöjärjestelmän versiota, millaisen skriptin valitsee skannausta varten ja paljastaa tracerouten. 
+Terminaali myös kertoo että on skannannut 1000 porttia, ja kaikki ovat ignored (not responsive) statuksessa. 
+”Too many fingerprints....” viittaa siihen että nmap skannaus ei pystynyt yksinkertaisesti määrittää mitä käyttöjärjestelmää ip käyttää.
+
+Nmap skannaus ei löytänyt tuloksia koska upouusi kali linux sulkee porttinsa out of the box. 
+
+D) Asensin whonix demonin, aluksi aiheutui tästä paljon päänvaivaa, en saanut whonix gatewayta toimii, silloin kun sen sai toimii ei toiminut whonix itessään, jouduin poistamaan admin ja user erottelun whonixista, sen jälkeen sain yhdistettyy nettiin ja asennettu sudo apt update and sudo git install, sen jälkeen nmapin asennusta ja lopulta päädyin tähän.Sitten syötin terminaaliin saman komennon mitä aikasemminkin, mutta tällä kertaa se oli ilman sudoa, eli nmap -T4 -A localhost. 
+
+ 
+Terminaali tulosti seuraavat tiedot. 
+998 suljettua portita, mutta 2 auki, ne ovat 9050 mitä SOCKS protokolla käyttää ja 9102 mitä käyttää ehkä jetdirect, nmap ei ollut 100% varmaa, siitä syystä ”?”. 
+Kun luin mitä SOCKS oikeasti on ja miksi siinä on kaksi eri versiota, sain enemmän kysymyksiä kuin vastauksia, mutta ymmärrykseni mukaa socks on relay network, (relay network on ikään kuin node, mikä yhdistää minun tietokoneen serveriin) se toimii vain välikätenä, ottaa tiedon mitä minun tietokone generoi protokollassa, välittää sen serveriin, serveri vastaa ja socks välittää sen tiedon takaisin minun koneeseen.
+Kaksi eri socks versiota on siitä syystä, että jotkut sovellukset (vanhemmat) toimivat vain socks4 kautta, joten tor tukee myös niitä. Porti 9050 on nimenomaan siksi auki, että torin proxy toimisi.
+
+
+
+ 
+Seuraavaksi asensin debianin, ja huomasin että skannauksen outputti oli 631 portti mikä on auki. Debian CUPS 2.4 mikä käyttää porttia 631 että saisi nettiyhteyden.
+
+F)  
+
+Tein koneiden välille virtuaaliverkon käyttäen virtualboxia, tätä en aluksi ymmärtänyt, että miten tän tismalleen kuuluisi toimia, varsinkin kun luulin että olin aluksi tehnyt kaiken oikein.
+
+Eli aloitin  siitä että loin host only verkon.
+
+ 
+
+NAT verkon
+
+ 
+
+Kytkesin NAT verkon kali adapter 1, netti pois.
+Kytkesin Host only verkon kali  adapter 2.
+
+Metasploitable 2 laitoin host only adapter 1:seen.
+
+Avasin kali linuxsin, ja aloin ajamaan sudo nmap -sn terminaalissa.
+En kuitenkaan saanut mitään responssia. 
+ 
+
+Siinä vaiheessa tajusin että olin alunperin asettanut ip osoitteen host only network adapterin väärin. Joten konffasin sen uudestaan ja laitoin DHCP serverin päälle.
+
+Silti ei tapahtunut mitään, joten oli pakko käyttää claude opusta avuksi.
+ 
+Claude ehdotti että tarkistan ip osoitteen, ja yritän skannaa samassa sarjassa olevia ip osoitetta eli 192.168.56.0/24 , 256 eri iteraatiota ip osoitteita.
+ 
+
+Lopulta skanni löysi muutaman ip osoitteen jota yritin skannaa.
+Muutaman kokeilun jälkeen mielestäni löysin metasploitable 2.
+ 
+
+G)  Tarkistus että ip osoite on oikea.
+
+Tässä oli portti 21 mielenkiintoinen, koska siinä on vsftpd versio 2.3.4 missä on kuuluisa backdoori. Vulnerability: CVE-2011-2523
+Tässä saat aika helposti root accessin ja pääsee tekemään kaikkee mitä admin käyttäjällä voi tehdä. 
+
+Port 139/445 käytetään SMB (tiedonjakeluun) windows NetBiosissa. Siinä voi satunnaisesti löytää, käyttäjiä ja käyttäjien oikeuksia, laitteista tietoja, salasanojen policeitä, 
+
+
+
+Viitaukset: 
+
+1.	Hutchins et al 2011: Intelligence-Driven Computer Network Defense Informed by Analysis of Adversary Campaigns and Intrusion Kill Chains
+2.	https://en.wikipedia.org/wiki/Relay_network
+3.	https://nvd.nist.gov/vuln/detail/CVE-2011-2523
 
