@@ -1,0 +1,37 @@
+X1) https://learning.oreilly.com/videos/security-penetration-testing/9780134833989/9780134833989-sptt_00_06_01_00/
+
+6.1
+  Most system store credentials in some sort of database, in websites sql database, active directory they store them in a proprietary database. 
+  External blue exploit, they used a tool called Mimikatz they dumped the passwords out of memory, passwords have to be protected in 2 ways, over the network and in the storage. 
+6.2 
+  Most people reuse passwords
+Admin password is good to get
+Search for default passwords like "admin" "123456" "  "qwerty789" "Elokuu20XX"
+  How to obtain certain passwords?
+   Capturing credentials over the network
+  MITM attacks againts clear text protocols (pretty obsolete nowadays)
+  MITM attacks againts ciphered protocols (Spoof an SSL certificate, SSH downgrade attacks)
+  MITM relay attacks (steal the creds directly from the device)
+  Brute forcing passwords (Medusa,Dirbuster, etc)
+  First you have to find the users to crack the passwords.
+  Nmap has scripts to enumarate users
+6.4 
+  Password storage vulnerability 
+  Dictionaries like rainbow tables to crack passwords
+  Windows does not have salting in their password
+  Because people use re-use passwords, you can use password breaches to guess their passwords.
+6.5
+  John the ripper demo
+  You can use a dictionary here, you can add rules to your dictionaries
+  Different types of formats, depening on the hash type you want to crack
+  In the demo they were cracking older windows hashes, cracking split passwords, microsoft algorithm used to split the password hashes into 2.
+  Like most tools John has a dictionary attack mode aswell. 
+  
+How to improve password security?
+  - 2 factor authentication
+  - certificate based authentication
+  - hash salting
+  - better randomness and longer passwords
+
+X2) https://terokarvinen.com/2023/crack-file-password-with-john/
+
