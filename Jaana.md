@@ -4,61 +4,18 @@ YMPÄRISTÖ: Oracle Virtualbox (OS) Kali Linux 10GB ram allocated
 
 MISSÄ: Kotona
 
-KELLONAIKA: 21-09-2025 14:00-23:00, 22-09-2025 09:30-13:40
+Tämän projektin tarkoitus on näyttää, Kali Linuxin erilaisia työkaluja, miten niitä käytetään ja miten niitä asennetaan. 
+
+Projektin tavoitteet:
+
+- Näyttää erilaisia työkaluja
+- Mitä on mahdollista tehdä Kali Linuxsissa
 
 
-# X1) # 
 
-  https://learning.oreilly.com/videos/security-penetration-testing/9780134833989/9780134833989-sptt_00_06_01_00/
+--------------Projekti---------------
 
-  Videoissa puhutaan siitä, miten yritykset tai sovellukset tallentavat tietoja. Esim. salasanat säilytetään sql tai active directory tietokannoissa.
-  
-  Miten luvattomasti ihmiset pääsee näihin tietoihin?
-  
-  Esim. Mimikatz työkalulla hackkerit external blue exploitissa, dumppasivat salasanat ram- muistista.
-  
-  Seuraava kappale kertoi MITM (Man in the middle) hyökkäyksistä. MITM hyökkäyksiä voi tehdä esim. spooffaamalla sertifikaatteja, siitä hyökkääjä voi saada tarvittavia tietoja käyttäjästä ja mahdollisia salasanoja jne.
-  
-  MITM relay hyökkäyksillä, esim. suoraan laitteelta varastetaan tärkeät tunnukset.
-  
-  Kappaleessa kevyesti käydään myös läpi miten löytää käytäjiä verkossa/laitteelta ja miten näitä salasanoja tallennetaan. 
-  
-  Esim. nmap skannauksella voi enumereittaa käyttäjiä.
-  
-  Salasanoja vuotaa koko ajan, joten niitä salasanoja on hyvä käyttää brute forcaamiseen.
-
-  Videossa käytiin tarkasti läpi John the ripperiä ja miten se toimii. Videossa näytettiin miten John:ia voidaan käyttää vanhojen windows salasanojen murtamiseen.
-  
-  Miten salasanojen turvallisuutta voidaan parantaa?
-  - 2 factor authentication
-  - certificate based authentication
-  - hash salting
-  - satunnaiset salasanat ja pidemmät salasanat
-
-# X2) #  
-  
-  https://terokarvinen.com/2023/crack-file-password-with-john/
-
-  Artikkelissä käydään läpi miten asennetaan john the ripper, tässä suoraan kloonattiin john the ripper github repo ja miten sen repon voi asentaa tietokoneelleen silleen että sitä voi käyttää command-linessä.
-
-  Artikkelli käy läpi miten salasanalla suojatun zip tiedoston saa murrettu auki. Luodaan zip tiedostosta -> hash loppuinen tiedosto mihin tallennetaan zip tiedoston salasanan hashhi -> hash tiedostoa käytetään          salasanan murtamisessa. 
-
-  Lopuksi käydään läpi mitä kaikkia eri formaatteja John the Ripper pystyy murtaa.
-
-# X3) 
-
-  https://terokarvinen.com/2022/cracking-passwords-with-hashcat/ 
-
-  Artikkeli käsittää miten hashcattia käytetään. Hashcat tarvitsee hashin mitä vastaan se kohdistaa murtoa. 
-  Hashcat tunnistaa automaattisesti hashin tyyppin käyttämällä -m flagia.
-
-  Muutamaa yleistä error viestiä mitä hashcatista voi tulla, esim. exhausted tarkoittaa että hashcat on käynyt kaikki salasanat listalla läpi.
-
-  Hashcat toimii nopeammin jos se on sun host OS:ssä kiinni, ei virtuaaliympäristössä.
-
-# A) 
-
-Asenna Hashcat ja testaa sen toiminta murtamalla esimerkkisalasana.
+Tässä haluan näyttää miten Hashcat toimii.
 
 Hashcatti asennettu (defaultti kali linuxissa)
 
@@ -112,37 +69,6 @@ Komennon jälkeen sain salasanan tallennettuna ja se näyttää tältä
 
 <img width="557" height="61" alt="image" src="https://github.com/user-attachments/assets/36902af8-348d-4584-bdfb-46409ca60548" />
 
-# B) 
-
-Tässä yritin käyttää john the ripperiä mikä oli asennettu kaliin defaulttina. 
-
-Seurasin ohjeita tästä artikkelistä: https://terokarvinen.com/2023/crack-file-password-with-john/
-
-Aloitin siitä että latasin crackattavan tiedoston kaliin: 
-
-<img width="746" height="209" alt="image" src="https://github.com/user-attachments/assets/397695d0-fa2b-48eb-b464-95780352d817" />
-
-Yritin unzippaa tiedoston, se ei onnistu koska pyytää salasanaa.
-
-<img width="761" height="127" alt="image" src="https://github.com/user-attachments/assets/42d38a2c-5ecc-41cd-b7ea-35c7ea9d2284" />
-
-tein tero.zip -> hash tiedoston, tätä hashia yriteteään murtaa.
-
-<img width="754" height="255" alt="image" src="https://github.com/user-attachments/assets/c2337b3d-ee60-4fd2-8ca2-9eb86fc87e90" />
-
-Käytin komentoa 
-
-``john tero.zip.hash`` 
-
-tämä kertoo komentoriville että yritetään tehdä brute force hyökkäystä salasanan hashiin.
-
-<img width="758" height="227" alt="image" src="https://github.com/user-attachments/assets/d64c2ed9-8db5-46b6-95e8-aa3a6466fb59" />
-
-Seuraavaksi unzippasin tiedosotn ja käytin löytämäni salasanaa.
-
-<img width="771" height="507" alt="image" src="https://github.com/user-attachments/assets/a60b239c-0d61-4701-b9c0-9f5e76412da9" />
-
-# E) 
 
 Tein PDF tiedoston, minkä suojasin salasanalla "123456789a".
 
@@ -190,8 +116,6 @@ Tämä näytti toimivan.
 
 <img width="599" height="104" alt="image" src="https://github.com/user-attachments/assets/6275b7e5-504b-416d-b9e4-4dea79d523aa" />
 
-# F) 
-
 Päätin tehdä linux käyttäjän ja yrittää murtaa käyttäjän salasanan.
 
 Annoin käyttäjälle salasanaksi "123456789a".
@@ -222,7 +146,6 @@ salasana murrettu.
 
 <img width="512" height="151" alt="image" src="https://github.com/user-attachments/assets/1764e739-a58d-46c6-86b1-b96425a451ba" />
 
-# G)
 
 Ensiksi halusin nähdä, mitkä payloadit ovat msfvenomissa. 
 
@@ -284,8 +207,3 @@ https://www.openwall.com/john/doc/
 
 https://hashcat.net/wiki/doku.php?id=hashcat
 
-https://terokarvinen.com/2023/crack-file-password-with-john/
-
-https://terokarvinen.com/2022/cracking-passwords-with-hashcat/
-
-https://terokarvinen.com/tunkeutumistestaus/#laksyt
