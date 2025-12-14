@@ -15,6 +15,8 @@ Projektin tavoitteet:
 
 --------------Projekti---------------
 
+------HashCat-------
+
 Tässä haluan näyttää miten Hashcat toimii.
 
 Hashcatti asennettu (defaultti kali linuxissa)
@@ -69,6 +71,7 @@ Komennon jälkeen sain salasanan tallennettuna ja se näyttää tältä
 
 <img width="557" height="61" alt="image" src="https://github.com/user-attachments/assets/36902af8-348d-4584-bdfb-46409ca60548" />
 
+-----John The Ripper-----
 
 Tein PDF tiedoston, minkä suojasin salasanalla "123456789a".
 
@@ -146,6 +149,7 @@ salasana murrettu.
 
 <img width="512" height="151" alt="image" src="https://github.com/user-attachments/assets/1764e739-a58d-46c6-86b1-b96425a451ba" />
 
+-------MsfConsole & Msfvenom------
 
 Ensiksi halusin nähdä, mitkä payloadit ovat msfvenomissa. 
 
@@ -200,6 +204,8 @@ tein palomuurin reiän ``ufw allow 4444``, tämä komentoo sallii 4444 tcp liike
 <img width="766" height="54" alt="image" src="https://github.com/user-attachments/assets/04d7a248-be53-4198-95a1-f09aab5d7ef4" />
 
 measploitti sai yhteyden.
+
+--------Sliver--------
 
 Tässä yritän generoida implantin millä voin kuunella liikennettä.
 
@@ -265,4 +271,11 @@ VIITTEET:
 https://www.openwall.com/john/doc/
 
 https://hashcat.net/wiki/doku.php?id=hashcat
+
+https://www.huntandhackett.com/blog/hunting-for-a-sliver
+
+https://wiki.wireshark.org/DisplayFilters
+
+https://dominicbreuker.com/post/learning_sliver_c2_08_implant_basics/
+
 
