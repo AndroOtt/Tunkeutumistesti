@@ -201,6 +201,65 @@ tein palomuurin reiän ``ufw allow 4444``, tämä komentoo sallii 4444 tcp liike
 
 measploitti sai yhteyden.
 
+Tässä yritän generoida implantin millä voin kuunella liikennettä.
+
+Aloitin siitä, että asensin sliverin.
+
+<img width="672" height="275" alt="image" src="https://github.com/user-attachments/assets/35eb766a-7202-4cfb-a67f-04a9e0a2c215" />
+
+Navigoin oikeeseen hakemistoon missä sliver oli asennettu.
+
+<img width="265" height="46" alt="image" src="https://github.com/user-attachments/assets/7e1cf694-b25f-48cb-add2-1958b56e9fe2" />
+
+Käynnistin sliverin
+
+<img width="515" height="236" alt="image" src="https://github.com/user-attachments/assets/5a496f94-a949-4beb-bba9-436c5733f79a" />
+
+Aluksi yritin muutamaa tapaa generoida payloadi.
+
+<img width="617" height="75" alt="image" src="https://github.com/user-attachments/assets/9bc5d860-8d65-4b70-bd07-9289a34cc8a2" />
+
+Tämä tapa ei onnistunut, joten päätin lukea dokkeja vähäsen. 
+
+Dokeissa annetaan esimerkki, missä 
+
+'sliver > generate --http example.com --os mac'
+
+Tästä päättelin, että pitääkö -http olla ip osoite, sen sijaan että käytän pelkkää localhostia. En myöskään specifoi lporttia, koska se tuotti ongelmia. Sliverin käyttää defaulttina porttia 80
+
+Kuitenkin, generointi epäonnistui
+
+<img width="544" height="135" alt="image" src="https://github.com/user-attachments/assets/0060ebc1-31cd-4cc3-b4fe-2b9f26a813f8" />
+
+Kun katsoin error viestiä tarkemmin, tajusin, että sliverillä ei ole oikeuksia tehdä tiedostoa. Joten sulkesin sliverin ja runnasin ohjelman sudo sliver komennolla
+
+Tämän jälkeen implantin generointikin onnistui. Käynnistin malwaren tiedoston ja silveriin syntyi sessio.
+
+<img width="459" height="120" alt="image" src="https://github.com/user-attachments/assets/6b00915d-3e77-4135-9910-038756bf87cc" />
+
+<img width="948" height="44" alt="image" src="https://github.com/user-attachments/assets/54a7781b-3e17-48eb-a88a-16c5784e068c" />
+
+Tässä yritän tehdä uuden implantin, tämä implantti ottaa yhteyttä minun kohdekoneeseen windowsiin virtuaalikoneesta.
+
+Haittaohjelman generointi oli helppoa, sillä osasin komennot jo.
+
+<img width="922" height="153" alt="image" src="https://github.com/user-attachments/assets/dbdc2571-edac-4376-848e-6d9da2f5fcfa" />
+
+
+Lataamisessa oli pieniä ongelmia, koitin aluksi kaikkia julkisia fileshare alustoja mutta ne ei näköjää halua levittää viruksia >.< 
+
+Kysyin tekoälyltä neuvoja ja se neuvosi minut hostaa impacketing smbserverin. 
+
+<img width="235" height="269" alt="image" src="https://github.com/user-attachments/assets/39045684-a837-49d0-a9f5-8ca2bbe14007" />
+
+Sitten latasin tiedoston käyttäen CMDtä. Piti myös laitta windows defenderi pois päältä sillä se tunnisti ohjelman haitalliseksi.
+
+<img width="564" height="56" alt="image" src="https://github.com/user-attachments/assets/8485d741-5c65-4c62-9453-63c2ee220339" />
+
+Wiresharkilla löysin kali linuxin ja minun host OS välisen yhteyden.
+
+<img width="812" height="141" alt="image" src="https://github.com/user-attachments/assets/26c92f7c-1172-4f35-a348-e5bfc687c430" />
+
 VIITTEET:
 
 https://www.openwall.com/john/doc/
